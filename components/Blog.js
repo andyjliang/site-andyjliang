@@ -1,45 +1,23 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
-class PostSummary extends Component {
+class Blog extends Component {
 	constructor(props) {
 		super(props);
-		this.handleClick = this.handleClick.bind(this);
-	}
-	handleClick() {
-		alert('yo');
 	}
 	render() {
-		return(
-			<div className="col-lg-8">
+		debugger
+		let postNodes = this.props.posts.map((post, postIndex) => {
+			return (
+				<div className="col-lg-8">
 
-				<h2 className="clickable" onClick={this.handleClick}>{this.props.title}</h2>
+					<h2 className="clickable" onClick={() => this.props.showSinglePost(postIndex)}>{post.title}</h2>
 
-		        <p><span className="glyphicon glyphicon-time"></span> Posted on {this.props.date}</p>
+			        <p><span className="glyphicon glyphicon-time"></span> Posted on {post.date}</p>
 
-		        <p className="tiny-text clickable" onClick={this.handleClick} dangerouslySetInnerHTML={{__html: this.props.text.substr(0,200) + "...<b>Read More</b>"}}/>
+			        <p className="tiny-text clickable" onClick={() => this.props.showSinglePost(postIndex)} dangerouslySetInnerHTML={{__html: post.text.substr(0,200) + "...<b>Read More</b>"}}/>
 
-		    </div>
-		);
-	}
-}
-
-export default class Blog extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { data: [] };
-	}
-	componentWillMount() {
-		axios.get('/api/blog')
-			.then(
-				(res) => {
-					this.setState({ data: res.data});
-				}
-			);
-	}
-	render() {
-		let postNodes = this.state.data.map(post => {
-			return (<PostSummary key={ post._id } text={ post.text } date={ post.date } title={ post.title } />);
+			    </div>
+			)
 		})
 		return (
 			<div>
@@ -49,3 +27,4 @@ export default class Blog extends Component {
 		)
 	}	
 }
+export default Blog;

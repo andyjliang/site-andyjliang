@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Blog from './Blog';
 import ProfileCard from './ProfileCard';
 import Projects from './Projects'
+import Post from './Post'
+import BlogContainer from '../containers/BlogContainer'
 
 class App extends Component {
 	render() {
@@ -31,10 +32,10 @@ class App extends Component {
 
 	                <ProfileCard/>
 	                
-	                <Route exact path="/" component={Blog} />
-	                <Route path="/blog" component={Blog} />
+	                <Route exact path="/" component={BlogContainer} />
+	                <Route path="/blog" component={BlogContainer} />
 	                <Route path="/projects" component={Projects} />
-	                
+	                <Route path="/post" component={Post} />
 
 	                
 
