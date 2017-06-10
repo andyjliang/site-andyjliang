@@ -4,9 +4,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var showSinglePost = exports.showSinglePost = function showSinglePost() {
+var showSinglePost = exports.showSinglePost = function showSinglePost(postIndex) {
   return {
-    type: 'SHOW_ONE_POST'
+    type: 'SHOW_ONE_POST',
+    index: postIndex
   };
 };
 
@@ -162,19 +163,24 @@ var Blog = function (_Component) {
 	}
 
 	_createClass(Blog, [{
+		key: "showSinglePost",
+		value: function showSinglePost(postIndex) {
+			this.props.onClickPost(postIndex);
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var _this2 = this;
 
-			debugger;
 			var postNodes = this.props.posts.map(function (post, postIndex) {
+
 				return _react2.default.createElement(
 					"div",
-					{ className: "col-lg-8" },
+					{ key: post._id, className: "col-lg-8" },
 					_react2.default.createElement(
 						"h2",
 						{ className: "clickable", onClick: function onClick() {
-								return _this2.props.showSinglePost(postIndex);
+								return _this2.showSinglePost(postIndex);
 							} },
 						post.title
 					),
@@ -186,10 +192,10 @@ var Blog = function (_Component) {
 						post.date
 					),
 					_react2.default.createElement("p", { className: "tiny-text clickable", onClick: function onClick() {
-							return _this2.props.showSinglePost(postIndex);
+							return _this2.showSinglePost(postIndex);
 						}, dangerouslySetInnerHTML: { __html: post.text.substr(0, 200) + "...<b>Read More</b>" } })
 				);
-			});
+			}, this);
 			return _react2.default.createElement(
 				"div",
 				null,
@@ -5841,9 +5847,6 @@ exports.default = function () {
   var action = arguments[1];
 
   switch (action.type) {
-    case 'SHOW_POSTS':
-      debugger;
-      return state;
     case 'SHOW_ONE_POST':
       debugger;
       return state;

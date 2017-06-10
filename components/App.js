@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import ProfileCard from './ProfileCard';
 import Projects from './Projects'
-import Post from './Post'
+import PostContainer from '../containers/PostContainer'
 import BlogContainer from '../containers/BlogContainer'
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
 	                <Route exact path="/" component={BlogContainer} />
 	                <Route path="/blog" component={BlogContainer} />
 	                <Route path="/projects" component={Projects} />
-	                <Route path="/post" component={Post} />
+	                <Route path="/post" component={PostContainer} />
 
 	                
 

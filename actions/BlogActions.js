@@ -1,5 +1,6 @@
 
-export const showSinglePost = () => ({
-  type: 'SHOW_ONE_POST'
+export const showSinglePost = (postIndex) => ({
+  type: 'SHOW_ONE_POST',
+  index: postIndex
 })
 
