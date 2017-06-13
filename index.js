@@ -31,7 +31,8 @@ app.use(logger('dev'));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/api/blog', function(req, res) {
-	Post.find().exec((err, data) => {
+	// return newest first
+	Post.find().sort({_id:-1}).exec((err, data) => {
     if (err) res.send(err);
 
     res.send(data);

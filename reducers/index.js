@@ -1,8 +1,9 @@
 export default (state = [], action) => {
   	switch (action.type) {
     	case 'SHOW_ONE_POST':
-    		debugger
-      		return state
+      		return Object.assign({}, state, {
+      			postIndex: action.postIndex
+      		})
     	default:
       		return state
   	}

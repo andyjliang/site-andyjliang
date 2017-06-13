@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import {
-  withRouter
-} from 'react-router-dom'
 
 class Blog extends Component {
 	constructor(props) {
@@ -15,7 +12,7 @@ class Blog extends Component {
 
 		let postNodes = this.props.posts.map((post, postIndex) => {
 
-			return withRouter(
+			return (
 
 				<div key={post._id} className="col-lg-8">
 
@@ -30,6 +27,7 @@ class Blog extends Component {
 			)
 
 		}, this)
+
 		return (
 			<div>
 				<h2>{this.props.title}</h2>
