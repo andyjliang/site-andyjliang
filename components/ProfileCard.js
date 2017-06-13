@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
 
-class SocialLink extends Component {
-  render() {
-    return (
-      <a className={"btn btn-lg btn-social-icon btn-"+this.props.name} target="_blank" href={this.props.url} title={"Find Me on "+this.props.name}>
-        <span className={"fa fa-"+this.props.name}/>
-      </a>
-    )
-  }
-}
+const SocialLink = ({name, url}) => (
+  <a className={"btn btn-lg btn-social-icon btn-"+name} target="_blank" href={url} title={"Find Me on "+name}>
+    <span className={"fa fa-"+name}/>
+  </a>
+)
 
 export default class ProfileCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+  redirectToResume() {
+    this.props.history.push('/resume');    
+  }
+  showSinglePost(postIndex) {
+    this.props.onClickPost(postIndex);
+    this.props.history.push('/post');
+  }
   render() {
+    
+    // Strings for Populating Social Links
     var githubURL = "https://github.com/andyjliang";
     var facebookURL = "https://facebook.com/JandyJ"
     var googleURL = "https://google.com/+AndyLiangSoftwareProgrammer";
     var linkedInURL = "https://linkedin.com/in/andy-liang";
     var twitterURL = "https://twitter.com/AndyJLiang";
+
+    // Generating Nodes for Recent Posts 
+    let recentPostsHeaderSlice = this.props.posts.slice(0,5).map((post, postIndex) => (
+        <div key={post._id}>
+          <h6 className="clickable" onClick={() => this.showSinglePost(postIndex)}>
+            <span className="glyphicon glyphicon-pushpin"></span>
+            {post.title}
+          </h6>
+        </div>
+    ), this)
+
     return (
       <div className="profile-card col-md-4 px-2">
 
@@ -34,13 +53,30 @@ export default class ProfileCard extends Component {
           <SocialLink name="google" url={googleURL}/>
           <SocialLink name="twitter" url={twitterURL}/>
 
-          <hr/>
-
-          <h4 className="clickable">Contact Me</h4>
 
           <hr/>
 
-          <h4 className="clickable">Recent Posts</h4>
+          <h4>Recent Posts</h4>
+
+          {recentPostsHeaderSlice}
+
+          <hr/>
+
+          <h4 className="clickable">
+            <a className="profilecard-black-text" target="_blank" href="https://github.com/andyjliang/site-andyjliang">
+              About this site
+              <div className="spacer"/>
+              <span className="glyphicon glyphicon-knight"></span>
+            </a>
+          </h4>
+
+          <hr/>
+
+          <h4 className="clickable" onClick={() => this.redirectToResume()}>
+            Contact Me 
+            <div className="spacer"/>
+            <span className="glyphicon glyphicon-envelope"></span>
+          </h4>
 
         </div>
 

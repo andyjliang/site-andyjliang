@@ -14,13 +14,17 @@ class Blog extends Component {
 
 			return (
 
-				<div key={post._id} className="col-lg-8">
+				<div key={post._id} className="col-lg-8 entry">
 
 					<h2 className="clickable" onClick={() => this.showSinglePost(postIndex)}>{post.title}</h2>
 
-			        <p><span className="glyphicon glyphicon-time"></span> Posted on {post.date}</p>
+			        <p>
+			        	<span className="glyphicon glyphicon-time"></span> Posted on {post.date}
+			        </p>
 
-			        <p className="tiny-text clickable" onClick={() => this.showSinglePost(postIndex)} dangerouslySetInnerHTML={{__html: post.text.substr(0,200) + "...<b>Read More</b>"}}/>
+
+
+			        <p className="tiny-text" onClick={() => this.showSinglePost(postIndex)} dangerouslySetInnerHTML={{__html: post.text.substr(0,300) + "...<b class='clickable'>Read More</b>"}}/>
 
 			    </div>
 
@@ -30,7 +34,9 @@ class Blog extends Component {
 
 		return (
 			<div>
-				<h2>{this.props.title}</h2>
+				<h2>
+					<span className="content-header">Latest Blog Posts</span>
+				</h2>
 				{postNodes}
 			</div>
 		)

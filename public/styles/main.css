@@ -13,7 +13,7 @@ body {
     -o-background-size: cover;
 }
 
-h1,
+/*h1,
 h2,
 h3,
 h4,
@@ -23,7 +23,7 @@ h6 {
     font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
-}
+}*/
 
 p {
     line-height: 1.6;
@@ -78,7 +78,7 @@ hr {
 
 .box {
     margin-bottom: 20px;
-    padding: 30px 15px;
+    padding: 30px 20px;
     background: #fff;
     background: rgba(255,255,255,0.9);
 }
@@ -210,4 +210,41 @@ footer p {
 .clickable:hover {
     color: #0033cc;
     cursor: pointer;
+}
+
+.spacer {
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.content-header {
+    font-weight: 400;
+    color: #8c4f19;
+    padding-left: 15px;
+}
+
+.entry {
+    border-bottom: 1px solid #d3d0ca;   
+}
+
+.profilecard-black-text {
+    color: #333333;
+}
+
+.resume-section-header-font {
+    padding-bottom: 5px;
+    border-bottom: 3px solid #8c4f19;
+}
+
+.resume-section-header {
+    padding: 0;
+}
+
+.resume-header-font-slash {
+    font-weight: 100;
+    padding: 5px 10px;
+}
+
+.resume-section {
+    display: inline-block;
 }
