@@ -226,7 +226,7 @@ var Blog = function (_Component) {
 exports.default = Blog;
 
 },{"react":"react"}],4:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -234,7 +234,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -256,29 +256,48 @@ var Post = function (_Component) {
 	}
 
 	_createClass(Post, [{
-		key: "render",
+		key: 'redirectBack',
+		value: function redirectBack() {
+			this.props.history.push('/');
+		}
+	}, {
+		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			var postIndex = this.props.postIndex;
 			var post = this.props.posts[postIndex];
 
 			return _react2.default.createElement(
-				"div",
-				{ key: post._id, className: "col-lg-8" },
+				'div',
+				{ key: post._id, className: 'col-lg-8' },
 				_react2.default.createElement(
-					"h2",
+					'h2',
 					null,
 					post.title
 				),
 				_react2.default.createElement(
-					"p",
+					'p',
 					null,
-					_react2.default.createElement("span", { className: "glyphicon glyphicon-time" }),
-					" Posted on ",
+					_react2.default.createElement('span', { className: 'glyphicon glyphicon-time' }),
+					' Posted on ',
 					post.date
 				),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("br", null),
-				_react2.default.createElement("p", { dangerouslySetInnerHTML: { __html: post.text } })
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: post.text } }),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement('br', null),
+				_react2.default.createElement(
+					'h3',
+					{ className: 'clickable', onClick: function onClick() {
+							return _this2.redirectBack();
+						} },
+					_react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' }),
+					' Back'
+				)
 			);
 		}
 	}]);
@@ -367,6 +386,8 @@ var ProfileCard = function (_Component) {
         );
       }, this);
 
+      var selfDescription = "I'm Andy Liang. I'm a Software Developer in Los Angeles, " + "collaborating on projects, exploring new tech, and blogging about my learnings. I specialize on Node.js apps " + "with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!";
+
       return _react2.default.createElement(
         "div",
         { className: "profile-card col-md-4 px-2" },
@@ -377,7 +398,7 @@ var ProfileCard = function (_Component) {
           _react2.default.createElement(
             "p",
             { className: "tiny-text" },
-            "I'm Andy Liang. I'm a Front End Developer in Los Angeles, collaborating on projects, and conquering kimchi tacos. I specialize on Node.js apps with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!"
+            selfDescription
           ),
           _react2.default.createElement(SocialLink, { name: "github", url: githubURL }),
           _react2.default.createElement(SocialLink, { name: "linkedin", url: linkedInURL }),
@@ -486,60 +507,160 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var ResumeSection = function ResumeSection(prop) {
-	return _react2.default.createElement(
-		"div",
-		{ className: "col-lg-8 entry" },
-		_react2.default.createElement(
-			"div",
-			{ className: "col-md-3 resume-section-header" },
-			_react2.default.createElement(
-				"h3",
-				null,
-				_react2.default.createElement(
-					"span",
-					{ className: "resume-section-header-font" },
-					prop.section.sectionHeader
-				)
-			)
-		),
-		_react2.default.createElement(
-			"div",
-			{ className: "col-md-8" },
-			_react2.default.createElement(
-				"div",
-				null,
-				_react2.default.createElement(
-					"h3",
-					{ className: "resume-section" },
+var ResumeSection = function (_Component) {
+	_inherits(ResumeSection, _Component);
+
+	function ResumeSection(props) {
+		_classCallCheck(this, ResumeSection);
+
+		return _possibleConstructorReturn(this, (ResumeSection.__proto__ || Object.getPrototypeOf(ResumeSection)).call(this, props));
+	}
+
+	_createClass(ResumeSection, [{
+		key: "generateBullets",
+		value: function generateBullets(bullets) {
+			return bullets ? bullets.map(function (bulletText) {
+				return _react2.default.createElement(
+					"p",
+					{ className: "tiny-text" },
+					" \u2022 ",
+					bulletText
+				);
+			}) : "";
+		}
+	}, {
+		key: "generateProjects",
+		value: function generateProjects(projects) {
+			var _this2 = this;
+
+			return projects ? projects.map(function (project) {
+
+				return _react2.default.createElement(
+					"div",
+					{ className: "resume-project" },
 					_react2.default.createElement(
-						"span",
-						{ className: "resume-header-font" },
-						prop.section.entryHeader
+						"div",
+						{ className: "resume-project-header" },
+						_react2.default.createElement(
+							"h4",
+							{ className: "resume-section" },
+							_react2.default.createElement(
+								"span",
+								{ className: "resume-header-font" },
+								project.projectTitle
+							),
+							_react2.default.createElement(
+								"span",
+								{ className: "resume-header-font-slash" },
+								"/"
+							)
+						),
+						_react2.default.createElement(
+							"p",
+							{ className: "resume-section" },
+							project.projectTime
+						)
+					),
+					_this2.generateBullets(project.projectBullets)
+				);
+			}) : "";
+		}
+	}, {
+		key: "generateEntries",
+		value: function generateEntries(entries) {
+			var _this3 = this;
+
+			return entries ? entries.map(function (entry) {
+				return _react2.default.createElement(
+					"div",
+					null,
+					_react2.default.createElement(
+						"div",
+						null,
+						_react2.default.createElement(
+							"h3",
+							{ className: "resume-section" },
+							_react2.default.createElement(
+								"span",
+								{ className: "resume-header-font" },
+								entry.entryHeader
+							),
+							_react2.default.createElement(
+								"span",
+								{ className: "resume-header-font-slash" },
+								"/"
+							)
+						),
+						_react2.default.createElement(
+							"p",
+							{ className: "resume-section" },
+							entry.entryTime
+						)
 					),
 					_react2.default.createElement(
-						"span",
-						{ className: "resume-header-font-slash" },
-						"/"
+						"p",
+						null,
+						entry.entrySubHeader
+					),
+					_this3.generateBullets(entry.entryBullets),
+					_this3.generateProjects(entry.entryProjects),
+					_this3.generateSkillChart(entry.chart)
+				);
+			}) : "";
+		}
+	}, {
+		key: "generateSkillChart",
+		value: function generateSkillChart(chart) {
+			return chart ? chart.map(function (bar) {
+				return _react2.default.createElement(
+					"div",
+					{ className: "bar" },
+					_react2.default.createElement("span", { className: "bar-level", style: { width: bar.percentage } }),
+					_react2.default.createElement(
+						"em",
+						null,
+						bar.name
+					)
+				);
+			}) : "";
+		}
+	}, {
+		key: "render",
+		value: function render() {
+
+			var sectionHeader = this.props.sectionHeader;
+			var entries = this.props.entries;
+
+			return _react2.default.createElement(
+				"div",
+				{ className: "col-lg-8 entry" },
+				_react2.default.createElement(
+					"div",
+					{ className: "col-md-3 resume-section-header" },
+					_react2.default.createElement(
+						"h3",
+						null,
+						_react2.default.createElement(
+							"span",
+							{ className: "resume-section-header-font" },
+							sectionHeader
+						)
 					)
 				),
 				_react2.default.createElement(
-					"p",
-					{ className: "resume-section" },
-					prop.section.entryTime
+					"div",
+					{ className: "col-md-9" },
+					this.generateEntries(this.props.entries)
 				)
-			),
-			_react2.default.createElement(
-				"p",
-				null,
-				prop.section.entrySubHeader
-			)
-		)
-	);
-};
+			);
+		}
+	}]);
 
-var Resume = function (_Component) {
-	_inherits(Resume, _Component);
+	return ResumeSection;
+}(_react.Component);
+
+var Resume = function (_Component2) {
+	_inherits(Resume, _Component2);
 
 	function Resume(props) {
 		_classCallCheck(this, Resume);
@@ -552,24 +673,109 @@ var Resume = function (_Component) {
 		value: function render() {
 
 			var education = {
-				sectionHeader: "Research",
-				entryHeader: "MIT",
-				entryTime: "Graduated 2014",
-				entrySubHeader: "GPA 4.5 • B.S. in Brain Cognitive Sciences • Cambridge, MA"
+				sectionHeader: "Education",
+				entries: [{
+					entryHeader: "MIT",
+					entryTime: "Graduated 2014",
+					entrySubHeader: "GPA 4.5 • B.S. in Brain Cognitive Sciences • Cambridge, MA"
+				}]
 			};
 
 			var work = {
 				sectionHeader: "Work",
-				entryHeader: "Oracle",
-				entryTime: "Aug 2014 - Present",
-				entrySubHeader: "Software Engineer • San Jose, CA"
+				entries: [{
+					entryHeader: "Oracle",
+					entryTime: "Aug 2014 - Present",
+					entrySubHeader: "Software Engineer • San Jose, CA",
+					entryProjects: [{
+						projectTitle: "Form Designer",
+						projectTime: "Apr 2015 – present",
+						projectBullets: ["Central-to-product Data Form designer: creating & editing forms in sleek, intuitive UI"]
+					}]
+				}]
+			};
+
+			var skills = {
+				sectionHeader: "Skills",
+				entries: [{
+					entryHeader: "Coding Languages",
+					entryTime: "",
+					entrySubHeader: "",
+					chart: [{
+						name: "JavaScript",
+						percentage: "95%"
+					}, {
+						name: "Python",
+						percentage: "75%"
+					}, {
+						name: "Java",
+						percentage: "75%"
+					}, {
+						name: "PHP",
+						percentage: "55%"
+					}]
+				}, {
+					entryHeader: "Web Frameworks",
+					entryTime: "",
+					entrySubHeader: "",
+					chart: [{
+						name: "React JS",
+						percentage: "80%"
+					}, {
+						name: "Knockout JS",
+						percentage: "80%"
+					}, {
+						name: "Flask",
+						percentage: "70%"
+					}, {
+						name: "Oracle ADF",
+						percentage: "65%"
+					}]
+				}, {
+					entryHeader: "Scripting Languages",
+					entryTime: "",
+					entrySubHeader: "",
+					chart: [{
+						name: "Matlab",
+						percentage: "85%"
+					}, {
+						name: "R",
+						percentage: "45%"
+					}, {
+						name: "LaTeX",
+						percentage: "65%"
+					}]
+				}]
 			};
 
 			var research = {
 				sectionHeader: "Research",
-				entryHeader: "Tomaso Poggio Lab",
-				entryTime: "2012 - 2014",
-				entrySubHeader: "MIT CS Artifical Intelligence Lab • Cambridge, MA"
+				entries: [{
+					entryHeader: "Tomaso Poggio Lab",
+					entryTime: "2012 - 2014",
+					entrySubHeader: "MIT CS Artifical Intelligence Lab • Cambridge, MA",
+					entryBullets: ["Pattern classifiers (machine learning) for accuracy-speed neural population decoding", "Calculated lowest noise correlations using feature selections & cross-validations", "Identified pathways within hierarchical attention model of Macaque monkeys"]
+				}, {
+					entryHeader: "Logothetis Lab",
+					entryTime: "Summer 2013",
+					entrySubHeader: "Max Planck Institute ​of Biological Cybernetics • Tuebingen, Germany",
+					entryBullets: ["Examined noise correlations on binocular rivalry via performance encoding", "Collected Fisher information to investigate neuron pool discriminability"]
+				}, {
+					entryHeader: "Pritchard Lab",
+					entryTime: "2011 - 2012",
+					entrySubHeader: "Research Laboratory of Electronics • Cambridge, MA",
+					entryBullets: ["Assistant instructor for Classical Mechanics in the Integrated Online Environment", "Coded in LaTeX physics problems for launched teaching platform Lon-Capa"]
+				}]
+			};
+
+			var volunteer = {
+				sectionHeader: "Volunteer",
+				entries: [{
+					entryHeader: "Bridgemen",
+					entryTime: "2016 - 2017",
+					entrySubHeader: "San Francisco CA",
+					entryBullets: ["public projects e.g. workshops for low-income kids/families, soup kitchen, hosting HIV/AIDS testing"]
+				}]
 			};
 
 			return _react2.default.createElement(
@@ -584,9 +790,11 @@ var Resume = function (_Component) {
 						"Resume"
 					)
 				),
-				_react2.default.createElement(ResumeSection, { section: education }),
-				_react2.default.createElement(ResumeSection, { section: work }),
-				_react2.default.createElement(ResumeSection, { section: research })
+				_react2.default.createElement(ResumeSection, education),
+				_react2.default.createElement(ResumeSection, work),
+				_react2.default.createElement(ResumeSection, skills),
+				_react2.default.createElement(ResumeSection, research),
+				_react2.default.createElement(ResumeSection, volunteer)
 			);
 		}
 	}]);

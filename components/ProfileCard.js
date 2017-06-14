@@ -36,6 +36,10 @@ export default class ProfileCard extends Component {
         </div>
     ), this)
 
+    let selfDescription = "I'm Andy Liang. I'm a Software Developer in Los Angeles, " + 
+        "collaborating on projects, exploring new tech, and blogging about my learnings. I specialize on Node.js apps " + 
+        "with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!"
+
     return (
       <div className="profile-card col-md-4 px-2">
 
@@ -43,9 +47,7 @@ export default class ProfileCard extends Component {
 
           <div className="myphoto"/>  
 
-          <p className="tiny-text">
-            I'm Andy Liang. I'm a Front End Developer in Los Angeles, collaborating on projects, and conquering kimchi tacos. I specialize on Node.js apps with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!
-          </p>
+          <p className="tiny-text">{selfDescription}</p>
 
           <SocialLink name="github" url={githubURL}/>
           <SocialLink name="linkedin" url={linkedInURL}/>

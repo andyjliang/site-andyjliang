@@ -240,11 +240,60 @@ footer p {
     padding: 0;
 }
 
+.resume-project-header {
+    font-weight: 300;
+}
+
+.resume-project {
+    border-left: 5px solid #d3d0ca;
+    padding-left: 8px;
+}
+
 .resume-header-font-slash {
     font-weight: 100;
-    padding: 5px 10px;
+    padding: 0px 10px 0px 5px;
+}
+
+.resume-project-header .resume-section {
+    margin: 0;
 }
 
 .resume-section {
     display: inline-block;
+}
+
+.bar-level {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding-right: 24px;
+    background: #313131;
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    border-radius: 3px 0 0 3px;
+}
+
+.bar-level:hover {
+    background: rgb(17, 171, 176);
+}
+
+.bar {
+    margin-bottom: 30px;
+    background: #ccc;
+    height: 42px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.bar em {
+    font: 15px 'opensans-bold', sans-serif;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: normal;
+    position: relative;
+    top: 10px;
+    left: 10px;
 }
