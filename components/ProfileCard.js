@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-var Carousel = require('react-bootstrap').Carousel
-
 const SocialLink = ({name, url}) => (
   <a className={"btn btn-lg btn-social-icon btn-"+name} target="_blank" href={url} title={"Find Me on "+name}>
     <span className={"fa fa-"+name}/>
@@ -35,23 +33,12 @@ export default class ProfileCard extends Component {
         "collaborating on projects, exploring new tech, and blogging about my learnings. I specialize on Node.js apps " + 
         "with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!"
 
-    let carouselItemsSrcs = ["aboutme", "tokyo"]
-    let carouselItems = carouselItemsSrcs.map((src, index) => (
-        <Carousel.Item key={index}>
-          <img height={100} src={"/styles/images/"+src+".png"}/>
-        </Carousel.Item>
-    ))
-
     return (
       <div className="profile-card col-md-4 px-2">
 
         <div className="well">
 
-          <Carousel>
-
-              {carouselItems}
-            
-          </Carousel>
+          <div className="myphoto"/>  
 
           <p className="tiny-text">{selfDescription}</p>
 
