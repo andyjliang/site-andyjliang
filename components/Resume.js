@@ -6,17 +6,17 @@ class ResumeSection extends Component {
 	}
 	generateBullets(bullets) {
 	 	return((bullets) ?
-			bullets.map((bulletText) => (
-				<p className="tiny-text"> • {bulletText}</p>
+			bullets.map((bulletText, index) => (
+				<p key={index} className="tiny-text"> • {bulletText}</p>
 			)) : "")
 	}
 	generateProjects(projects) {
 		return((projects) ? 
-			projects.map((project) => {
+			projects.map((project, index) => {
 
 				return (
 
-					<div className="resume-project">
+					<div key={index} className="resume-project">
 
 				    	<div className="resume-project-header"> 
 
@@ -37,8 +37,8 @@ class ResumeSection extends Component {
 	}
 	generateEntries(entries) {
 		return ((entries) ? 
-			entries.map((entry) => (
-				<div> 
+			entries.map((entry, index) => (
+				<div key={index}> 
 
 					<div>
 
@@ -64,8 +64,8 @@ class ResumeSection extends Component {
 	}
 	generateSkillChart(chart) {
 		return ((chart) ?
-			chart.map((bar) => (
-				<div className="bar">
+			chart.map((bar, index) => (
+				<div key={index} className="bar">
 					<span className="bar-level" style={{width : bar.percentage}}></span>
 					<em>{bar.name}</em>
 				</div>
@@ -121,7 +121,7 @@ class Resume extends Component {
 				{
 					entryHeader: "Oracle",
 					entryTime: "Aug 2014 - Present",
-					entrySubHeader: "Software Engineer • San Jose, CA",
+					entrySubHeader: "Software Engineer • Hyperion Planning • San Jose, CA",
 					entryProjects: [
 						{
 							projectTitle: "Form Designer",
@@ -243,6 +243,20 @@ class Resume extends Component {
 		let volunteer = {
 			sectionHeader: "Volunteer",
 			entries: [
+				{
+					entryHeader: "Hack for LA",
+					entryTime: "2017 - Present",
+					entrySubHeader: " • Los Angeles CA",
+					entryProjects: [
+						{
+							projectTitle: "Adopt Civic Art",
+							projectTime: "",
+							projectBullets: [
+								"application engaging members of the community could 'adopt' a public art piece - helping maintain, and upkeep civic arts across Los Angeles"
+							]
+						}
+					]
+				},
 				{
 					entryHeader: "Bridgemen",
 					entryTime: "2016 - 2017",

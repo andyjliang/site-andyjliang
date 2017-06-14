@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+var Carousel = require('react-bootstrap').Carousel
+
 const SocialLink = ({name, url}) => (
   <a className={"btn btn-lg btn-social-icon btn-"+name} target="_blank" href={url} title={"Find Me on "+name}>
     <span className={"fa fa-"+name}/>
@@ -18,13 +20,6 @@ export default class ProfileCard extends Component {
     this.props.history.push('/post');
   }
   render() {
-    
-    // Strings for Populating Social Links
-    var githubURL = "https://github.com/andyjliang";
-    var facebookURL = "https://facebook.com/JandyJ"
-    var googleURL = "https://google.com/+AndyLiangSoftwareProgrammer";
-    var linkedInURL = "https://linkedin.com/in/andy-liang";
-    var twitterURL = "https://twitter.com/AndyJLiang";
 
     // Generating Nodes for Recent Posts 
     let recentPostsHeaderSlice = this.props.posts.slice(0,5).map((post, postIndex) => (
@@ -40,20 +35,31 @@ export default class ProfileCard extends Component {
         "collaborating on projects, exploring new tech, and blogging about my learnings. I specialize on Node.js apps " + 
         "with ReactJS and KnockoutJS frameworks. Check me out on my social avenues!"
 
+    let carouselItemsSrcs = ["aboutme", "tokyo"]
+    let carouselItems = carouselItemsSrcs.map((src, index) => (
+        <Carousel.Item key={index}>
+          <img height={100} src={"/styles/images/"+src+".png"}/>
+        </Carousel.Item>
+    ))
+
     return (
       <div className="profile-card col-md-4 px-2">
 
         <div className="well">
 
-          <div className="myphoto"/>  
+          <Carousel>
+
+              {carouselItems}
+            
+          </Carousel>
 
           <p className="tiny-text">{selfDescription}</p>
 
-          <SocialLink name="github" url={githubURL}/>
-          <SocialLink name="linkedin" url={linkedInURL}/>
-          <SocialLink name="facebook" url={facebookURL}/>
-          <SocialLink name="google" url={googleURL}/>
-          <SocialLink name="twitter" url={twitterURL}/>
+          <SocialLink name="github" url={this.props.githubURL}/>
+          <SocialLink name="linkedin" url={this.props.linkedInURL}/>
+          <SocialLink name="facebook" url={this.props.facebookURL}/>
+          <SocialLink name="google" url={this.props.googleURL}/>
+          <SocialLink name="twitter" url={this.props.twitterURL}/>
 
 
           <hr/>
@@ -64,11 +70,21 @@ export default class ProfileCard extends Component {
 
           <hr/>
 
+          <h4 className="clickable">  
+            <a className="profilecard-black-text" target="_blank" href="http://tech.mit.edu/author/Andy+Liang/">
+              MIT Tech Publications
+              <div className="spacer"/>
+              <span className="glyphicon glyphicon-education"></span>
+            </a>
+          </h4>
+
+          <hr/>
+
           <h4 className="clickable">
             <a className="profilecard-black-text" target="_blank" href="https://github.com/andyjliang/site-andyjliang">
               About this site
               <div className="spacer"/>
-              <span className="glyphicon glyphicon-knight"></span>
+              <span className="fa fa-github" style={{fontSize: '1.3em'}}></span>
             </a>
           </h4>
 
