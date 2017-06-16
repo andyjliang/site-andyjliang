@@ -124,10 +124,31 @@ class Resume extends Component {
 					entrySubHeader: "Software Engineer • Hyperion Planning • San Jose, CA",
 					entryProjects: [
 						{
-							projectTitle: "Form Designer",
+							projectTitle: "Adhoc Form Designer",
 							projectTime: "Apr 2015 – present",
 							projectBullets: [
-								"Central-to-product Data Form designer: creating & editing forms in sleek, intuitive UI"
+								"Central-to-product designer: move to stateless, as application scale in end-user numbers",
+								"One-time RESTful calls to Oracle Essbase database, by using KnockoutJS data-binds to DOMs",
+								"Imposed strict prototypical inheritance, with one-way data flow on MVC",
+								"Giving definitive advantage over financial planning competitors on performance & UX"
+							]
+						},
+						{
+							projectTitle: "Grid Interface",
+							projectTime: "Nov 2014 – present",
+							projectBullets: [
+								"Developed grid feature used among 4 groups: Strategic Finance, Modeller, Smartform, & Planning",
+								"Published model data structures with data-on-DOM to reflect MVC, as grid rerenders often",
+								"Employed functionalized programming, and TDD lifecycle using QUnit for ease-of-testing",
+								"Published APIs,  authored documentation & FAQs, guiding developers through use & debugging"
+							]
+						},
+						{
+							projectTitle: "Jetified Templates ",
+							projectTime: "Jan 2015 – Aug 2016",
+							projectBullets: [
+								"Built reusable layout templates in Oracle JET for quick starts & UI components to customize",
+								"Optimized critical rendering path by resource preloading using RequireJS & network profiling"
 							]
 						}
 					]
@@ -145,7 +166,7 @@ class Resume extends Component {
 					chart: [
 						{
 							name: "JavaScript",
-							percentage: "95%"
+							percentage: "100%"
 						},
 						{
 							name: "Python",
@@ -240,32 +261,38 @@ class Resume extends Component {
 			]
 		}
 
+		let thisWebsite = {
+			sectionHeader: "Website",
+			entries: [
+				{
+					entryHeader: "About This Site",
+					entryTime: "",
+					entrySubHeader: "",
+					entryBullets: [
+						"Full stack web app featuring served blog & interactive resume using RESTful API calls",
+						"Implemented with MERN stack, following React + Redux data-flow design pattern",
+						"Hosted on Heroku, database backed on mLab MongoDB, deployed using ExpressJS",
+						"Optimized with React-Router, NPM axios for promise handling, automated with Gulp"
+					]
+				}	
+			]		
+		}
+
 		let volunteer = {
-			sectionHeader: "Volunteer",
+			sectionHeader: "Collaborations",
 			entries: [
 				{
 					entryHeader: "Hack for LA",
-					entryTime: "2017 - Present",
-					entrySubHeader: " • Los Angeles CA",
-					entryProjects: [
-						{
-							projectTitle: "Adopt Civic Art",
-							projectTime: "",
-							projectBullets: [
-								"application engaging members of the community could 'adopt' a public art piece - helping maintain, and upkeep civic arts across Los Angeles"
-							]
-						}
-					]
-				},
-				{
-					entryHeader: "Bridgemen",
-					entryTime: "2016 - 2017",
-					entrySubHeader: "San Francisco CA",
+					entryTime: "Mar 2016 – Present",
+					entrySubHeader: "Project: Adopt-Civic-Art • Los Angeles CA",
 					entryBullets: [
-						"public projects e.g. workshops for low-income kids/families, soup kitchen, hosting HIV/AIDS testing"
+						"Web app using public city data of murals around Los Angeles for users to ‘adopt’ the art",
+						"Wrote CRUD/serializations endpoints using routes to serve back page templates using Flask",
+						"Used ORM SQLAlchemy to map schemas & process queries back to MySQL database",
+						"Worked with UX team to draw the backend schemas, determine wireframes, & dictate tech-stack"
 					]
-				}
-			]
+				}	
+			]		
 		}
 
 
@@ -292,6 +319,10 @@ class Resume extends Component {
 				{/* LABORATORY EXPERIENCE */}
 
 					<ResumeSection {...research}/>
+
+				{/* ABOUT THIS WEBSITE */}
+
+					<ResumeSection {...thisWebsite}/>
 
 				{/* VOLUNTEER */}
 

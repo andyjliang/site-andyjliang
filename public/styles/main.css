@@ -189,24 +189,13 @@ footer p {
     }
 }
 
-.carousel-inner img {
-    display: block;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%; 
-}
-
-.carousel-control {
-    display: none !important
-}
-
-/*.myphoto {
+.myphoto {
     background-image: url('images/aboutme.png');
     display: block;
     width: 300px;
     height: 300px;
     border-radius: 50%; 
-}*/
+}
 
 .tiny-text {
     font-size: 12px;
