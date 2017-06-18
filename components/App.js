@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Projects from './Projects'
+import ProjectsContainer from '../containers/ProjectsContainer'
 import PostContainer from '../containers/PostContainer'
 import BlogContainer from '../containers/BlogContainer'
 import ProfileCardContainer from '../containers/ProfileCardContainer'
@@ -31,7 +31,8 @@ class App extends Component {
 
 	                  <ul className="nav navbar-nav navbar-right">
 	                    <li><Link to="/blog">Blog</Link></li>	
-	                    <li><Link to="/resume">Resume</Link></li>	
+	                    <li><Link to="/resume">Resume</Link></li>
+	                    <li><Link to="/projects">Projects</Link></li>	
 	                  </ul>
 
 	                </div>
@@ -48,7 +49,7 @@ class App extends Component {
 	                
 	                <Route exact path="/" component={BlogContainer} />
 	                <Route path="/blog" component={BlogContainer} />
-	                <Route path="/projects" component={Projects} />
+	                <Route path="/projects" component={ProjectsContainer} />
 	                <Route path="/post" component={PostContainer} />
 	                <Route path="/resume" component={ResumeContainer} />
 	                

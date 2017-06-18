@@ -302,3 +302,27 @@ footer p {
     top: 10px;
     left: 10px;
 }
+
+.bulletin-board {
+    height: 600px;
+    border-radius: 15px;
+    border: solid #825210 20px;
+    background: #eab92d;
+}
+
+.postit p {
+    font-size: 22px;
+    padding: 5px;
+    font-family: "Shadows Into Light";
+}
+
+.postit {
+    height: 150px;
+    width: 150px;
+    background-color: yellow;
+    margin: 2px 0;
+    position: absolute;
+    cursor: -webkit-grab;
+    -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
+}

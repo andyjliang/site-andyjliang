@@ -191,9 +191,14 @@ class Resume extends Component {
 							name: "React JS",
 							percentage: "80%"
 						},
+
 						{
 							name: "Knockout JS",
 							percentage: "80%"
+						},
+						{
+							name: "Angular JS",
+							percentage: "50%"
 						},
 						{
 							name: "Flask",
